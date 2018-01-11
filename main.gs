@@ -1,10 +1,10 @@
 /*
 Spreadsheet:
-App Academy Sample Marketing Template (11Ax1mLVk7d2KClY0AeXJsIqTMKrlUyUKp2vcbKIRAXw)
+App Academy Sample Marketing Template (ID: 11Ax1mLVk7d2KClY0AeXJsIqTMKrlUyUKp2vcbKIRAXw)
 
 Sheet Names:
-Contacts (0)
-Template (1268994052)
+Contacts (ID: 0)
+Template (ID: 1268994052)
 
 Named Ranges:
 sender - Template!B1
@@ -26,7 +26,10 @@ var lastCol = contactsSheet.getLastColumn();
  * @returns {Null}
  */
 function sendEmails() {
-
+  
+  var ui = SpreadsheetApp.getUi();
+  var response = ui.alert('Would you like to send emails out?', ui.ButtonSet.YES_NO);
+  
   // Passed in string ranges must match corresponding named ranges
   var sender = templateSheet.getRange('sender').getValue();
   var subjectLine = templateSheet.getRange('subjectLine').getValue();
@@ -39,7 +42,7 @@ function sendEmails() {
     
     showHitQuotaMsgBox(quotaLeft, firstRow, lastRow);
     
-    } else {
+  } else if (response == ui.Button.YES) {
     
     // Loops through each person in contact list
     for (var r = firstRow; r <= lastRow; r++) {
@@ -72,7 +75,7 @@ function sendEmails() {
     };
     
   };
-
+ 
 };
 
 
