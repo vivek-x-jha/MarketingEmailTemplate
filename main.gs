@@ -11,6 +11,7 @@ sender - Template!B1
 subjectLine - Template!B2
 templateText - Template!B3
 */
+
 var ss = SpreadsheetApp.getActiveSpreadsheet();
 var contactsSheet = ss.getSheetByName('Contacts');
 var templateSheet = ss.getSheetByName('Template');
